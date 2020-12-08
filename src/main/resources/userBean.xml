@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <!--Define beans in multiple configuration files and import into main file >
+    <import resource="employee.xml"/>
+    <import resource="department.xml"/-->
+
+    <bean id="samir" class="edu.samir.demo.springbean.User">
+        <property name="name" value="Samir Guemri"/>
+        <property name="address" ref="address"/>
+        <property name="job" ref="job"/>
+    </bean>
+    <bean id="address" class="edu.samir.demo.springbean.Address">
+        <property name="number" value="10"/>
+        <property name="street" value="Avenue Republique"/>
+        <property name="zip" value="06000"/>
+    </bean>
+    <bean id="job" class="edu.samir.demo.springbean.Job">
+        <property name="jobId" value="Software Engineer"/>
+        <property name="address" ref="addressJob">
+        </property>
+    </bean>
+    <bean id="addressJob" class="edu.samir.demo.springbean.Address">
+        <property name="number" value="19"/>
+        <property name="street" value="Sophia Antipolis"/>
+        <property name="zip" value="06000"/>
+    </bean>
+    <!-- creates a java.util.List instance with values loaded from the supplied values >
+    <util:list id="emails" list-class="java.util.LinkedList">
+        <value>jackshaftoe@vagabond.org</value>
+        <value>eliza@thinkingmanscrumpet.org</value>
+        <value>vanhoek@pirate.org</value>
+        <value>d'Arcachon@nemesis.org</value>
+    </util:list-->
+    <!-- creates a java.util.Map instance with the supplied key-value pairs >
+    <util:map id="emails">
+        <entry key="pechorin" value="pechorin@hero.org"/>
+        <entry key="raskolnikov" value="raskolnikov@slums.org"/>
+        <entry key="stavrogin" value="stavrogin@gov.org"/>
+        <entry key="porfiry" value="porfiry@gov.org"/>
+    </util:map-->
+
+    <!-- ==== AbstractResource ===== -->
+    <!--
+    <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="targetClass" value="org.example.demo.ticket.webapp.rest.resource.AbstractResource"/>
+        <property name="targetMethod" value="setManagerFactory"/>
+        <property name="arguments" ref="managerFactory"/>
+    </bean>
+    -->
+</beans>
